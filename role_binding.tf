@@ -1,4 +1,4 @@
-resource "kubernetes_role_binding" "restart" {
+resource "kubernetes_role_binding_v1" "restart" {
   metadata {
     name      = local.instance_name
     namespace = var.namespace
@@ -12,12 +12,12 @@ resource "kubernetes_role_binding" "restart" {
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind      = "Role"
-    name      = kubernetes_role.restart.metadata.0.name
+    name      = kubernetes_role_v1.restart.metadata.0.name
   }
 
   subject {
     kind      = "ServiceAccount"
-    name      = kubernetes_service_account.restart.metadata.0.name
+    name      = kubernetes_service_account_v1.restart.metadata.0.name
     namespace = var.namespace
   }
 }

@@ -1,4 +1,4 @@
-resource "kubernetes_role" "restart" {
+resource "kubernetes_role_v1" "restart" {
   metadata {
     name      = local.instance_name
     namespace = var.namespace
@@ -15,5 +15,4 @@ resource "kubernetes_role" "restart" {
     resource_names = [var.resource_name]
     verbs          = ["get", "patch", "list", "watch"]
   }
-
 }

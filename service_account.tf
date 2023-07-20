@@ -1,4 +1,4 @@
-resource "kubernetes_service_account" "restart" {
+resource "kubernetes_service_account_v1" "restart" {
   metadata {
     name      = local.instance_name
     namespace = var.namespace

@@ -1,4 +1,4 @@
-resource "kubernetes_cron_job" "restart" {
+resource "kubernetes_cron_job_v1" "restart" {
   metadata {
     name      = local.instance_name
     namespace = var.namespace
@@ -23,7 +23,7 @@ resource "kubernetes_cron_job" "restart" {
         template {
           metadata {}
           spec {
-            service_account_name = kubernetes_service_account.restart.metadata.0.name
+            service_account_name = kubernetes_service_account_v1.restart.metadata.0.name
 
             restart_policy = "Never"
 
